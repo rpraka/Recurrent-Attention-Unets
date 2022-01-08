@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 from tqdm import tqdm
 from config import params
-from data_prep import stratified_data_gen
+from data_tools.data_prep import stratified_data_gen
 from losses import DiceLoss
 from unet import UNet
 import logging
@@ -14,8 +14,7 @@ import matplotlib.pyplot as plt
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO, handlers=[
                         logging.FileHandler("run.log"),
-                        logging.StreamHandler()
-                    ])
+                        logging.StreamHandler()])
 
 # DataLoader creation
 train_loader, val_loader = stratified_data_gen(
@@ -69,9 +68,9 @@ for epoch in range(params['epochs']):
 
     # log metrics
     logging.info(
-        f"Train loss: {epoch_train_loss} | Train Accuracy: {100*(1 - epoch_train_loss)}%")
+        f"Train loss: {epoch_train_loss} | Train Accuracy: {100*(1 - epoch_train_loss)}")
     logging.info(
-        f"Validation loss: {epoch_val_loss} | Validation Accuracy: {100*(1-epoch_val_loss)}%")
+        f"Validation loss: {epoch_val_loss} | Validation Accuracy: {100*(1-epoch_val_loss)}")
 
     epoch_train_losses.append(epoch_train_loss)
     epoch_val_losses.append(epoch_val_loss)
