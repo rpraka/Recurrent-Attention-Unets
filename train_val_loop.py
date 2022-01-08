@@ -1,9 +1,9 @@
 import torch
 import pandas as pd
 from tqdm import tqdm
-from config import params
+from config.config import params
 from data_tools.data_prep import stratified_data_gen
-from dice_losses import DiceLoss
+from metrics.dice_losses import DiceLoss
 from models.unet import UNet
 import logging
 from os.path import join

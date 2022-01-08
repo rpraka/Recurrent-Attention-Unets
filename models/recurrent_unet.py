@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from torchviz import make_dot
 
-from dice_losses import DiceLoss
+from metrics.dice_losses import DiceLoss
 from utils.tensor_utils import crop_tensor
 
 
