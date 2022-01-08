@@ -91,3 +91,4 @@ dist/**
 data/
 models/
 *.ipynb
+.vscode/*
