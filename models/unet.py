@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 from torchviz import make_dot
+from utils.tensor_utils import crop_tensor
 
 
 class ConvBlock(nn.Module):
@@ -92,19 +93,8 @@ class Decoder(nn.Module):
             x1 (torch.Tensor): an encoder tensor to be cropped and concatenated with x0.
         """
         x0 = self.upsample(x0)
+        x1 = crop_tensor(x1, x0)
 
-        x0_h, x0_w = x0.shape[-2:]  # pull last two dimensions for HxW
-        x1_h, x1_w = x1.shape[-2:]
-        assert x1_h >= x0_h, "decoder tensor is shorter than encoder tensor"
-        assert x1_w >= x0_w, "decoder tensor is narrower than encoder tensor"
-
-        diff_h = (x1_h - x0_h)
-        offset = 1 if diff_h % 2 == 1 else 0
-        diff_h = diff_h//2
-
-        # crop encoder side tensor
-        x1 = x1[..., diff_h + offset:x1_h-diff_h, diff_h +
-                offset:x1_h-diff_h]  # reassign only last two dims
         x2 = torch.cat([x1, x0], dim=1)  # assign result to x2
         x2 = self.conv(x2)
         return x2
