@@ -1,7 +1,9 @@
 import torch
 from torch import nn
 from torchviz import make_dot
-from tensor_utils import crop_tensor
+
+from dice_losses import DiceLoss
+from utils.tensor_utils import crop_tensor
 
 
 class RecurrentBlock(nn.Module):

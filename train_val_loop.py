@@ -3,8 +3,8 @@ import pandas as pd
 from tqdm import tqdm
 from config import params
 from data_tools.data_prep import stratified_data_gen
-from losses import DiceLoss
-from unet import UNet
+from dice_losses import DiceLoss
+from models.unet import UNet
 import logging
 from os.path import join
 import numpy as np

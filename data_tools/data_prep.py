@@ -1,10 +1,10 @@
 import pandas as pd
-from data_utils import mask_distribution
+from data_tools.data_utils import mask_distribution
 from sklearn.model_selection import train_test_split
 from torchvision import transforms
 from torch.utils.data import DataLoader
-from datasets import BrainSegDataset
-from sample_transforms import Normalize, Rescale, RandomFlip, RandomCrop, ToTensor
+from data_tools.datasets import BrainSegDataset
+from sample_transforms.sample_transforms import Normalize, Rescale, RandomFlip, RandomCrop, ToTensor
 
 
 def stratified_data_gen(meta_path, img_root, train_size, batch_size, num_workers, random_state):

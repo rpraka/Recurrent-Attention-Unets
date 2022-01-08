@@ -1,7 +1,7 @@
 import torch
 from torch import nn
-from attention_unet import AttentionGate
-from reccurent_unet import RecurrentBlock, RecurrentDecoder, RecurrentEncoder
+from models.attention_unet import AttentionGate
+from models.recurrent_unet import RecurrentBlock, RecurrentDecoder, RecurrentEncoder
 
 
 class AttnRecUnet(nn.Module):
