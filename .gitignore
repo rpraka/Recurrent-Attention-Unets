@@ -89,6 +89,6 @@ dist/**
 
 *.log
 data/
-models/
+saved_models/
 *.ipynb
 .vscode/*
