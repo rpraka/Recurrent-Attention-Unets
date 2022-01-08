@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 from torchviz import make_dot
-from models.unet import ConvBlock, Decoder, Encoder
+from unet import ConvBlock, Decoder, Encoder
 
 
 class AttentionGate(nn.Module):

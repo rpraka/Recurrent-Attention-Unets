@@ -4,7 +4,7 @@ from tqdm import tqdm
 from config.config import params
 from data_tools.data_prep import stratified_data_gen
 from metrics.dice_losses import DiceLoss
-from models.unet import UNet
+from unet import UNet
 import logging
 from os.path import join
 import numpy as np
