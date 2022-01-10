@@ -47,7 +47,7 @@ To enable Cloud TPU acceleration, simply run tpu_wheel_setup/prep.sh and set `co
 
 For distributed training, ddp/train_val_loop.py can be invoked with CLI arguments as follows,
 ```console
-python ddp/train_val_loop.py --nodes 8 --gpn 2 --nrank 0 --epochs 10
+% python ddp/train_val_loop.py --nodes 8 --gpn 2 --nrank 0 --epochs 10
 ```
 nodes = total nodes running DDP | gpn = GPUs per node | nrank = node rank | epochs = num epochs per process
 
