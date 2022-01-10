@@ -15,31 +15,28 @@ Fluid-Attenuated Inversion Recovery (FLAIR) **brain MRI segmentation** is used a
 
 ## Brain MRI Segmentation
 The [Lower-Grade Glioma Segmentation Dataset](https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation) on Kaggle from Buda et al. contains brain MRI from 110 patients, with manual segmentation masks of gliomas. Some data samples are shown below.
-<p align="center">
+<p align="left">
 <img src='./images/data_preview.jpg'>
 </p>
 
 ### Data Tools
-___
 The *data_tools* directory shows techniques to properly split the dataset by patient to avoid data leakage. It makes use of custom PyTorch Dataset and DataLoader classes for clean and optimized sample retrieval. 
 
 I also devised a technique to stratify the split based on tumor progression (see *data_prep.py*).
 
 
 ### Stateful Sample Transforms
-___
 When working with a limited dataset, data augmentation is essential for regularization and usually enhances validation performance.
 
 To the best of my knowledge, PyTorch does not provide a default API to perform stateful or stochastic transforms on image and masks together. Thus, I've provided a set of custom transform classes that are able to perform such operations on a sample's image and mask together.
 
 ### Loss Functions
-___
 Variants of the Sørensen–Dice coefficient-derived dice loss were chosen as the primary loss function. This is because of the **heavy class imbalance** present in this dataset. There are several slices which have no FLAIR abnormalities at all, implying a blank segementation map. This would greatly bias pixel-wise loss functions like cross-entropy loss. Thus, a function which is robust to class imbalance (weighted cross entropy, dice loss, etc.) is required.
 
 
 Dice loss was originally proposed by [Milletari et al.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7785132) as follows, <br>
 <p align='center'>
-<img src="https://render.githubusercontent.com/render/math?math=DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}">
+<img src="https://render.githubusercontent.com/render/math?math=DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}" style="width:128px">
 </p>
 It sums over all N pixels, where p is obtained from the segmentation map and g from the ground truth binary mask.
 
