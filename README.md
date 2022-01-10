@@ -37,13 +37,16 @@ ___
 Variants of the Sørensen–Dice coefficient-derived dice loss were chosen as the primary loss function. This is because of the **heavy class imbalance** present in this dataset. There are several slices which have no FLAIR abnormalities at all, implying a blank segementation map. This would greatly bias pixel-wise loss functions like cross-entropy loss. Thus, a function which is robust to class imbalance (weighted cross entropy, dice loss, etc.) is required.
 
 
-Dice loss was originally proposed by [Milletari et al.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7785132) as follows,
-$$DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}$$
-It sums over all $N$ pixels, where $p_i$ is obtained from the segmentation map and $g_i$ from the ground truth binary mask.
+Dice loss was originally proposed by [Milletari et al.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7785132) as follows, <br>
+<p align='center'>
+<img src="https://render.githubusercontent.com/render/math?math=DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}">
+</p>
+It sums over all N pixels, where p is obtained from the segmentation map and g from the ground truth binary mask.
 
-For 2D images, a batch of $B$ samples is collected into a single tensor of size ($B$ x $C$ x $H$ x $W$). In many authors' implementations, a batch's dice loss is calculated as if we have a single image and mask, each with $BCHW$ pixels. I suspect this is done due to ease of implementation, and it results in only minor deviations. Still, I have provided one which is true to the original dice loss formulation.
+For 2D images, a batch of B samples is collected into a single tensor of size (B x C x H x W). In many authors' implementations, a batch's dice loss is calculated as if we have a single image and mask, each with BCHW pixels. I suspect this is done due to ease of implementation, and it results in only minor deviations. Still, I have provided one which is true to the original dice loss formulation.
 
 ## Distributed Data Parallel (DDP) and Cloud TPUs
+
 
 
 
