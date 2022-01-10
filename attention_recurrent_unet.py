@@ -84,5 +84,3 @@ if __name__ == "__main__":
     y = model(x)
     print('out', y.shape)
     print(y.min())
-    # make_dot(y, params=dict(list(model.named_parameters()))
-    #          ).render("unet_diagram", format="png")

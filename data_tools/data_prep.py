@@ -7,7 +7,7 @@ from data_tools.datasets import BrainSegDataset
 from sample_transforms.sample_transforms import Normalize, Rescale, RandomFlip, RandomCrop, ToTensor
 
 
-def stratified_data_gen(meta_path, img_root, train_size, batch_size, num_workers, random_state):
+def stratified_data_gen(meta_path, img_root, train_size, batch_size, num_workers, random_state, dset_only=False):
     """
     Generate train and validation DataLoaders. Stratified by percentage of blank slices / volume.
     Ensure NOT to split the same patient volume across train/valid sets, I frequently see people make this mistake.
@@ -42,5 +42,7 @@ def stratified_data_gen(meta_path, img_root, train_size, batch_size, num_workers
                               batch_size=batch_size, num_workers=num_workers)
     val_loader = DataLoader(dataset=val_dset, shuffle=False,
                             batch_size=batch_size, num_workers=num_workers)
+    if dset_only:
+        return train_dset, val_dset
 
     return train_loader, val_loader
