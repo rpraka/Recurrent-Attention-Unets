@@ -15,8 +15,9 @@ Fluid-Attenuated Inversion Recovery (FLAIR) **brain MRI segmentation** is used a
 
 ## Brain MRI Segmentation
 The [Lower-Grade Glioma Segmentation Dataset](https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation) on Kaggle from Buda et al. contains brain MRI from 110 patients, with manual segmentation masks of gliomas. Some data samples are shown below.
-<p align="left">
-<img src='./images/data_preview.jpg'>
+<p align="center">
+<img src='./images/data_preview.jpg' style='width:1000'>
+ <br>FLAIR Data Preview
 </p>
 
 ### Data Tools
