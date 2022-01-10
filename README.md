@@ -52,6 +52,7 @@ $ python ddp/train_val_loop.py --nodes 8 --gpn 2 --nrank 0 --epochs 10
 nodes = total nodes running DDP | gpn = GPUs per node | nrank = node rank | epochs = num epochs per process
 
 Make sure to specify the address and port of the master process in config.params.
+<p align='center'><img src="https://user-images.githubusercontent.com/16999635/72401724-d296d880-371a-11ea-90ab-737f86543df9.png"></p>
 
 
 
