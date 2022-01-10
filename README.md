@@ -49,10 +49,7 @@ For distributed training, ddp/train_val_loop.py can be invoked with CLI argument
 ```console
 python ddp/train_val_loop.py --nodes 8 --gpn 2 --nrank 0 --epochs 10
 ```
-nodes = total nodes running DDP
-gpn = GPUs per node
-nrank = node rank
-epochs = num epochs per process
+nodes = total nodes running DDP | gpn = GPUs per node | nrank = node rank | epochs = num epochs per process
 
 Make sure to specify the address and port of the master process in config.params.
 
