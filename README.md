@@ -36,7 +36,7 @@ Variants of the Sørensen–Dice coefficient-derived dice loss were chosen as th
 
 Dice loss was originally proposed by [Milletari et al.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7785132) as follows, <br>
 <p align='center'>
-<img src="https://render.githubusercontent.com/render/math?math=DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}" style="width:128px">
+<img src="https://render.githubusercontent.com/render/math?math=DL = 1 - \frac{2\sum_{i}^{N}{p_i g_i}}{\sum_{i}^{N}p_i^2g_i^2}" style="width:10em">
 </p>
 It sums over all N pixels, where p is obtained from the segmentation map and g from the ground truth binary mask.
 
