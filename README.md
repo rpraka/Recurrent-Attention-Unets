@@ -43,11 +43,18 @@ It sums over all N pixels, where p is obtained from the segmentation map and g f
 For 2D images, a batch of B samples is collected into a single tensor of size (B x C x H x W). In many authors' implementations, a batch's dice loss is calculated as if we have a single image and mask, each with BCHW pixels. I suspect this is done due to ease of implementation, and it results in only minor deviations. Still, I have provided one which is true to the original dice loss formulation.
 
 ## Distributed Data Parallel (DDP) and Cloud TPUs
-
-
-
-
 To enable Cloud TPU acceleration, simply run tpu_wheel_setup/prep.sh and set `config.params['device'] = 'tpu'`. Ensure that you are using an execution environment that supports PyTorch/XLA.
+
+For distributed training, ddp/train_val_loop.py can be invoked with CLI arguments as follows,
+```console
+python ddp/train_val_loop.py --nodes 8 --gpn 2 --nrank 0 --epochs 10
+```
+nodes = total nodes running DDP
+gpn = GPUs per node
+nrank = node rank
+epochs = num epochs per process
+
+Make sure to specify the address and port of the master process in config.params.
 
 
 
