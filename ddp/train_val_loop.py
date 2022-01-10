@@ -146,29 +146,11 @@ def train_val_loop(grank, args):  # mp calls function(i, args), i = proc idx
                 torch.save({
                     'proc_rank': proc_rank,
                     'epoch': epoch,
-                    'model_state_dict': model.state_dict(),
+                    'model_state_dict': model.module.state_dict(),  # pass unwrapped model
                     'optimizer_state_dict': optimizer.state_dict(),
                     'train_loss': epoch_train_loss,
                     'val_loss': epoch_val_loss,
                 }, join(params['model_dir'], f'/epoch{epoch}_val_{int(100*(1-epoch_val_loss))}'))
-
-    if grank == 0:
-        with torch.no_grad():
-            # Plot losses
-            fig, axs = plt.subplots(1, 2, figsize=(10, 7))
-            axs[0].plot(epoch_train_losses, label='train')
-            axs[0].plot(epoch_val_losses, label='val')
-            axs[0].legend()
-            axs[0].set(xlabel='Epoch', ylabel='Dice Loss',
-                       title='Loss vs. Epoch')
-
-            axs[1].plot(100*(1-epoch_train_losses), label='train')
-            axs[1].plot(100*(1-epoch_val_losses), label='val')
-            axs[1].legend()
-            axs[0].set(xlabel='Epoch', ylabel='Accuracy',
-                       title='Accuracy vs. Epoch')
-
-            fig.savefig(f'images/loss_curves.png')
 
 
 if __name__ == "__main__":
