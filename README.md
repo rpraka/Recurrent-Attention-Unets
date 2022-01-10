@@ -47,6 +47,10 @@ For 2D images, a batch of B samples is collected into a single tensor of size (B
 
 
 
+To enable Cloud TPU acceleration, simply set config.params['device'] to 'tpu'. 
+
+
+
 
 
 
