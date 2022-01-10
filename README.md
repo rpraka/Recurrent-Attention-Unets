@@ -47,7 +47,8 @@ For 2D images, a batch of B samples is collected into a single tensor of size (B
 
 
 
-To enable Cloud TPU acceleration, simply run tpu_wheel_setup/prep.sh, then set `config.params['device'] = 'tpu'`.
+To enable Cloud TPU acceleration, simply run tpu_wheel_setup/prep.sh and set `config.params['device'] = 'tpu'`. Ensure that you are using an execution environment that supports PyTorch/XLA.
+
 
 
 
